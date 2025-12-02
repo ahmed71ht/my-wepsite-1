@@ -1,387 +1,452 @@
 <!DOCTYPE html>
 <html dir="rtl" lang="ar">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <title>أحمد - المبرمج الصغير</title>
+
+    <!-- خطوط وأيقونات -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <link rel="icon"
         href="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRJp20RQ2q22UBBlM-n1gk15Ar4zr1yfVMXiSv3SCWZt_Ni-pZE"
         type="image/png">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-            -webkit-tap-highlight-color: transparent;
+        :root{
+            --bg:#07070a;
+            --card:#0f1116;
+            --muted:#9aa4b2;
+            --neon:#00eaff; /* Neon Blue chosen */
+            --accent: linear-gradient(90deg, rgba(0,234,255,0.12), rgba(0,153,255,0.06));
+            --glass: rgba(255,255,255,0.02);
+            --glass-2: rgba(255,255,255,0.03);
+            --radius: 12px;
         }
 
-        body {
-            background-color: #f0f2f5;
-            color: #333;
-            line-height: 1.7;
-            text-align: center;
-            padding-bottom: 70px;
+        *{box-sizing:border-box;margin:0;padding:0;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent}
+        html,body{height:100%}
+        body{
+            background: radial-gradient(1200px 600px at 10% 10%, rgba(0,234,255,0.03), transparent),
+                        radial-gradient(800px 500px at 90% 90%, rgba(0,68,255,0.02), transparent),
+                        var(--bg);
+            color:#e6eef6;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height:1.6;
+            padding:22px 16px 80px;
+            text-align:center;
         }
 
-        h1 {
-            width: 100%;
-            padding: 25px 15px;
-            background: blue;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-            position: relative;
-            margin-bottom: 15px;
+        .container{
+            max-width:900px;
+            margin:0 auto;
         }
 
-        h1::after,
-        h1::before {
-            content: "";
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+        /* Header */
+        header{
+            position:relative;
+            background: linear-gradient(90deg, rgba(0,234,255,0.08), rgba(0,153,255,0.04));
+            border:1px solid rgba(0,234,255,0.06);
+            padding:18px;
+            border-radius:14px;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+            backdrop-filter: blur(6px);
+            margin-bottom:18px;
         }
 
-        h1::after {
-            bottom: -30px;
-            right: -30px;
-            width: 60px;
-            height: 60px;
+        h1{
+            font-size:1.45rem;
+            font-weight:700;
+            color: #ffffff;
+            display:inline-flex;
+            align-items:center;
+            gap:12px;
+            position:relative;
         }
 
-        h1::before {
-            top: -20px;
-            left: -20px;
-            width: 50px;
-            height: 50px;
+        .neon-dot{
+            width:12px;height:12px;border-radius:50%;
+            background:var(--neon);
+            box-shadow: 0 0 10px rgba(0,234,255,0.6), 0 0 30px rgba(0,234,255,0.12);
+            transform:translateY(-1px);
         }
 
-        hr {
-            border: none;
-            height: 1px;
-            background: linear-gradient(to right, transparent, #d1d5db, transparent);
-            margin: 20px 5%;
+        header .meta{
+            margin-top:8px;
+            color:var(--muted);
+            font-size:0.92rem;
+            display:flex;
+            gap:12px;
+            justify-content:center;
+            flex-wrap:wrap;
         }
 
-        h2 {
-            width: 90%;
-            padding: 12px;
-            margin: 15px auto;
-            background: blue;
-            color: white;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            position: relative;
+        /* Sections */
+        section.card{
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border:1px solid rgba(255,255,255,0.03);
+            padding:14px;
+            border-radius:var(--radius);
+            margin:14px 0;
+            box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+            text-align:right;
         }
 
-        .who-im {
-            width: 90%;
-            margin: 0 auto 25px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
+        section.card h2{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            justify-content:space-between;
+            color:#fff;
+            font-size:1.08rem;
+            margin-bottom:8px;
         }
 
-        .who-im p {
-            background-color: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            font-size: 0.95rem;
-            border-right: 4px solid blue;
-            display: flex;
-            align-items: center;
+        section.card h2 .title-left{
+            display:flex;
+            align-items:center;
+            gap:8px;
         }
 
-        .who-im p::before {
-            content: "•";
-            color: blue;
-            font-weight: bold;
-            margin-left: 8px;
-            font-size: 1.3rem;
+        section.card p{
+            background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.0));
+            padding:12px;
+            border-radius:10px;
+            font-size:0.96rem;
+            color:#d8e6f2;
+            border-right:4px solid rgba(0,234,255,0.08);
         }
 
-        .how {
-            width: 90%;
-            margin: 0 auto 30px;
+        /* info list */
+        .info-grid{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:10px;
+            margin-top:6px;
         }
 
-        .how p {
-            background-color: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            font-size: 0.95rem;
-            text-align: right;
-            border-right: 4px solid blue;
-            line-height: 1.6;
+        .info-item{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:10px;
         }
 
-        .my-projeckt {
-            width: 90%;
-            margin: 0 auto 25px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
+        .info-item .label{color:var(--muted);font-size:0.9rem}
+        .info-item .value{font-weight:600;color:#fff}
+
+        /* projects */
+        .projects{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:12px;
+            margin-top:8px;
         }
 
-        .my-projeckt h2 {
-            width: 90%;
-            padding: 12px;
-            margin: 15px auto;
-            background: blue;
-            color: white;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            position: relative;
+        .project-card{
+            background: linear-gradient(180deg, rgba(0,234,255,0.02), transparent);
+            border:1px solid rgba(0,234,255,0.06);
+            padding:12px;
+            border-radius:10px;
+            text-align:right;
+            transition:transform .28s ease, box-shadow .28s ease;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
         }
 
-        .my-projeckt a {
-            background-color: white;
-            color: black;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            font-size: 0.95rem;
-            border-right: 4px solid blue;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
+        .project-card a{
+            color:#eafcff;
+            text-decoration:none;
+            font-weight:600;
         }
 
-        .my-projeckt a::before {
-            content: "•";
-            color: blue;
-            font-weight: bold;
-            margin-left: 8px;
-            font-size: 1.3rem;
+        .project-card .num{
+            color:var(--neon);
+            font-weight:700;
+            background:rgba(0,234,255,0.06);
+            padding:6px 10px;
+            border-radius:8px;
+            box-shadow: 0 6px 18px rgba(0,234,255,0.06);
         }
 
-        .my-skills {
-            width: 90%;
-            margin: 0 auto 25px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
+        .project-card:hover{
+            transform:translateY(-6px) scale(1.01);
+            box-shadow: 0 18px 50px rgba(0,234,255,0.06);
         }
 
-        .my-skills h2 {
-            width: 90%;
-            padding: 12px;
-            margin: 15px auto;
-            background: blue;
-            color: white;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            position: relative;
+        /* skills */
+        .skills-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+        .skill{
+            display:flex;flex-direction:column;gap:6px;
         }
 
-        .my-skills p {
-            background-color: white;
-            color: black;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            font-size: 0.95rem;
-            border-right: 4px solid blue;
-            display: flex;
-            align-items: center;
+        .skill .bar{
+            height:10px;
+            background:rgba(255,255,255,0.04);
+            border-radius:999px;
+            overflow:hidden;
+            border:1px solid rgba(255,255,255,0.02);
         }
 
-        .my-skills p::before {
-            content: "•";
-            color: blue;
-            font-weight: bold;
-            margin-left: 8px;
-            font-size: 1.3rem;
+        .skill .bar > i{
+            display:block;
+            height:100%;
+            width:60%;
+            background: linear-gradient(90deg, var(--neon), rgba(0,153,255,0.9));
+            box-shadow: 0 6px 20px rgba(0,234,255,0.08);
+            border-radius:999px;
+            transition:width .8s cubic-bezier(.2,.9,.3,1);
         }
 
-        .social-contact {
-            width: 90%;
-            margin: 0 auto 25px;
-            text-align: center;
+        .skill .label{
+            display:flex;justify-content:space-between;color:var(--muted);font-size:0.92rem;
         }
 
-        .social-contact h2 {
-            width: 90%;
-            padding: 12px;
-            margin: 15px auto;
-            background: blue;
-            color: white;
-            border-radius: 10px;
-            font-size: 1.2rem;
+        /* social buttons */
+        .socials{
+            display:flex;
+            gap:10px;
+            justify-content:center;
+            flex-wrap:wrap;
+            margin-top:10px;
         }
 
-        .social-contact a {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 20px;
-            background-color: white;
-            color: black;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
+        .btn-social{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            padding:10px 14px;
+            border-radius:999px;
+            background:var(--glass-2);
+            border:1px solid rgba(255,255,255,0.03);
+            color:#eafcff;
+            text-decoration:none;
+            font-weight:600;
+            transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
         }
 
-        .tiktok {
-            border: 2px solid black;
+        .btn-social i{font-size:1.05rem;color:var(--neon)}
+
+        .btn-social:hover{
+            transform:translateY(-4px);
+            box-shadow: 0 14px 35px rgba(0,234,255,0.06);
+            background: linear-gradient(90deg, rgba(0,234,255,0.04), rgba(0,153,255,0.02));
         }
 
-        .tiktok:hover {
-            background-color: black;
-            color: white;
+        /* tiktok / whatsapp / insta specific */
+        .tiktok{--icon-color:#fff}
+        .whatsapp i{color:#25D366}
+        .instagram i{color:#c32aa3}
+
+        /* footer */
+        footer{
+            margin-top:18px;
+            color:var(--muted);
+            font-size:0.9rem;
+            opacity:0.9;
         }
 
-        .whatsapp {
-            border: 2px solid rgb(0, 255, 0);
+        /* small devices */
+        @media (max-width:720px){
+            .info-grid{grid-template-columns:1fr}
+            header{padding:14px}
+            .container{padding:0 6px}
+            .project-card{flex-direction:column;align-items:flex-start;gap:8px}
         }
 
-        .whatsapp:hover {
-            background-color: rgb(0, 255, 0);
-            color: white;
-        }
-
-        .instagram {
-            border: 2px solid purple;
-        }
-
-        .instagram:hover {
-            background-color: purple;
-            color: white;
-        }
-
-        /* تحسينات للشاشات الصغيرة جداً */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.3rem;
-                padding: 15px 10px;
-            }
-
-            h2,
-            .my-skills h2,
-            .my-projeckt h2,
-            .social-contact h2 {
-                font-size: 1.1rem;
-                padding: 5px;
-                width: 100%;
-            }
-
-            .who-im p,
-            .how p,
-            .my-projeckt a,
-            .my-skills p {
-                font-size: 0.9rem;
-                padding: 5px;
-            }
-
-            .social-contact a {
-                display: inline-block;
-                width: 30%;
-                margin: 10px 5px;
-                font-size: 0.95rem;
-                margin: 10px 4px;
-                padding: 10px;
-            }
-        }
-
-        @media (max-width: 390px) {
-            .social-contact a {
-                margin: 10px 0px;
-                padding: 1px;
-            }
-        }
-
-        @media (max-width: 356px) {
-            .social-contact a {
-                margin: 10px 0px;
-                padding: 5px;
-            }
-        }
-
-        @media (min-width: 1042px) {
-            .social-contact a {
-                margin: 10px 5%;
-            }
-
-        }
+        /* very small tweaks */
+        a[role="button"]{cursor:pointer}
     </style>
 </head>
-
 <body>
-    <h1>أحمد - المبرمج الصغير</h1>
+    <div class="container">
 
-    <hr>
+        <header>
+            <h1>
+                <span class="neon-dot" aria-hidden="true"></span>
+                أحمد - المبرمج الصغير
+            </h1>
 
-    <div class="who-im">
-        <h2>من أنا؟</h2>
-        <p>الاسم الكامل: أحمد حسام حرامي</p>
-        <p>مكان الولادة: سوريا/إدلب/معرة النعمان</p>
-        <p>مكان السكن: تركيا/هاتاي/الريحانية</p>
-        <p>العمر: 14 سنة</p>
-        <p>تاريخ الميلاد: 10.6.2011</p>
-        <p>الصف: الثامن</p>
-        <p>الطول: 171 سم</p>
-        <p>الوزن: 70 كغ</p>
+            <div class="meta" aria-hidden="true">
+                <div>موقع شخصي • بورتفوليو خفيف</div>
+                <div>ستايل: Dark + Neon</div>
+            </div>
+        </header>
+
+        <!-- من أنا -->
+        <section class="card" id="who">
+            <h2>
+                <span class="title-left"><i class="fa-solid fa-user" style="color:var(--neon)"></i> من أنا؟</span>
+            </h2>
+
+            <div class="info-grid" role="list">
+                <div class="info-item"><div class="label">الاسم الكامل</div><div class="value">أحمد حسام حرامي</div></div>
+                <div class="info-item"><div class="label">مكان الولادة</div><div class="value">سوريا / إدلب / معرة النعمان</div></div>
+                <div class="info-item"><div class="label">مكان السكن</div><div class="value">تركيا / هاتاي / الريحانية</div></div>
+                <div class="info-item"><div class="label">العمر</div><div class="value">14 سنة</div></div>
+                <div class="info-item"><div class="label">تاريخ الميلاد</div><div class="value">10.6.2011</div></div>
+                <div class="info-item"><div class="label">الصف</div><div class="value">الثامن</div></div>
+                <div class="info-item"><div class="label">الطول</div><div class="value">171 سم</div></div>
+                <div class="info-item"><div class="label">الوزن</div><div class="value">70 كغ</div></div>
+            </div>
+        </section>
+
+        <!-- كيف بدأت -->
+        <section class="card" id="how">
+            <h2><span class="title-left"><i class="fa-solid fa-lightbulb" style="color:var(--neon)"></i> كيف بدأت في تعلم البرمجة؟</span></h2>
+            <p>
+                في سن 12 بدأت أفكر أن أصبح مبرمجاً وأتعلم البرمجة، وبدأت التعلم في سن 13 بلغات بسيطة على الهاتف.
+                ومنذ فترة أحضر لي والدي حاسوباً، ومنذ ذلك الحين بدأت في تعلم لغات الويب مثل HTML و CSS وأطمح لتطوير
+                مهاراتي أكثر في المستقبل.
+            </p>
+        </section>
+
+        <!-- مهارات -->
+        <section class="card" id="skills">
+            <h2><span class="title-left"><i class="fa-solid fa-code" style="color:var(--neon)"></i> مهاراتي</span></h2>
+
+            <div class="skills-list" aria-hidden="false">
+                <div class="skill">
+                    <div class="label">HTML</div>
+                    <div class="bar"><i style="width:95%"></i></div>
+                    <div class="label" style="display:flex;justify-content:space-between;color:var(--muted)">
+                        <span>مستوى تقريبي</span><span style="color:#eafcff">متقدم</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="label">CSS</div>
+                    <div class="bar"><i style="width:92%"></i></div>
+                    <div class="label" style="display:flex;justify-content:space-between;color:var(--muted)">
+                        <span>مستوى تقريبي</span><span style="color:#eafcff">متقدم</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="label">JavaScript</div>
+                    <div class="bar"><i style="width:78%"></i></div>
+                    <div class="label" style="display:flex;justify-content:space-between;color:var(--muted)">
+                        <span>مستوى تقريبي</span><span style="color:#eafcff">متوسط - متقدم</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="label">PHP</div>
+                    <div class="bar"><i style="width:65%"></i></div>
+                    <div class="label" style="display:flex;justify-content:space-between;color:var(--muted)">
+                        <span>مستوى تقريبي</span><span style="color:#eafcff">قواعدي جيدة</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- مشاريع -->
+        <section class="card" id="projects">
+            <h2><span class="title-left"><i class="fa-solid fa-diagram-project" style="color:var(--neon)"></i> مشاريعي</span></h2>
+
+            <div class="projects" role="list">
+                <div class="project-card" role="listitem">
+                    <div>
+                        <div class="num">1</div>
+                    </div>
+                    <div style="text-align:right">
+                        <a href="https://legendary-croissant-6201ab.netlify.app/" target="_blank" rel="noopener">مشروع رقم 1 : انقر هنا</a>
+                    </div>
+                </div>
+
+                <div class="project-card" role="listitem">
+                    <div><div class="num">2</div></div>
+                    <div style="text-align:right"><a href="https://creative-macaron-b8bbd7.netlify.app/" target="_blank" rel="noopener">مشروع رقم 2 : انقر هنا</a></div>
+                </div>
+
+                <div class="project-card" role="listitem">
+                    <div><div class="num">3</div></div>
+                    <div style="text-align:right"><a href="https://fanciful-dolphin-199c7b.netlify.app/" target="_blank" rel="noopener">مشروع رقم 3 : انقر هنا</a></div>
+                </div>
+
+                <div class="project-card" role="listitem">
+                    <div><div class="num">4</div></div>
+                    <div style="text-align:right"><a href="https://musical-blini-96eb9b.netlify.app/" target="_blank" rel="noopener">مشروع رقم 4 : انقر هنا</a></div>
+                </div>
+
+                <div class="project-card" role="listitem">
+                    <div><div class="num">5</div></div>
+                    <div style="text-align:right"><a href="https://lustrous-fox-87ae9d.netlify.app/" target="_blank" rel="noopener">مشروع رقم 5 : انقر هنا</a></div>
+                </div>
+
+                <div class="project-card" role="listitem">
+                    <div><div class="num">6</div></div>
+                    <div style="text-align:right"><a href="https://incredible-cactus-7711e3.netlify.app/" target="_blank" rel="noopener">مشروع رقم 6 : انقر هنا</a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- تواصل -->
+        <section class="card" id="contact">
+            <h2><span class="title-left"><i class="fa-solid fa-address-book" style="color:var(--neon)"></i> تواصل معي</span></h2>
+
+            <div class="socials" role="navigation" aria-label="طرق التواصل">
+                <a class="btn-social tiktok" href="https://www.tiktok.com/@.a7_md" target="_blank" rel="noopener">
+                    <i class="fab fa-tiktok"></i> تيك توك
+                </a>
+
+                <a id="whatsappBtn" class="btn-social whatsapp" href="https://wa.me/905528668231" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> واتساب
+                </a>
+
+                <a class="btn-social instagram" href="https://instagram.com/k.69hk" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i> إنستغرام
+                </a>
+            </div>
+
+            <div style="margin-top:12px;color:var(--muted);font-size:0.95rem">
+                اضغط على أي زر لفتح الرابط في نافذة جديدة
+            </div>
+        </section>
+
+        <footer>
+            صنعته بكل حب — أحمد (المبرمج الصغير) • نسخة مظهر Neon Blue
+        </footer>
+
     </div>
 
-    <hr>
+    <script>
+        // بسيط: تأثير تحميل تدريجي لشريط المهارات عند دخول الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            // اختيار كل أشرطة المهارات (i داخل .bar)
+            const bars = document.querySelectorAll('.skill .bar > i');
+            // إعادة ضبط العرض ثم تأخير لعمل أنيميشن لطيف
+            bars.forEach(bar => {
+                const w = bar.style.width || '0%';
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = w;
+                }, 150);
+            });
 
-    <div class="how">
-        <h2>كيف بدأت في تعلم البرمجة؟</h2>
-        <p>
-            في سن 12 بدأت أفكر أن أصبح مبرمجاً وأتعلم البرمجة، وبدأت التعلم في سن 13 بلغات بسيطة على الهاتف. ومنذ فترة
-            أحضر لي والدي حاسوباً، ومنذ ذلك الحين بدأت في تعلم لغات الويب مثل HTML و CSS وأطمح لتطوير مهاراتي أكثر في
-            المستقبل.
-        </p>
-    </div>
+            // تأثير ضوء على العنوان كل ثواني (ناعِم)
+            const neonDot = document.querySelector('.neon-dot');
+            if(neonDot){
+                let on = true;
+                setInterval(() => {
+                    neonDot.style.opacity = on ? '1' : '0.55';
+                    on = !on;
+                }, 1200);
+            }
 
-    <hr>
-
-    <div class="my-skills">
-        <h2>مهاراتي</h2>
-        <p>1. HTML</p>
-        <p>2. CSS</p>
-        <p>3. JavaScript</p>
-        <p>4. PHP</p>
-    </div>
-
-    <hr>
-
-    <div class="my-projeckt">
-        <h2>مشاريعي</h2>
-        <a href="https://legendary-croissant-6201ab.netlify.app/" target="_blank">مشروع رقم 1 : انقر هنا</a>
-        <a href="https://creative-macaron-b8bbd7.netlify.app/" target="_blank">مشروع رقم 2 : انقر هنا</a>
-        <a href="https://fanciful-dolphin-199c7b.netlify.app/" target="_blank">مشروع رقم 3 : انقر هنا</a>
-        <a href="https://musical-blini-96eb9b.netlify.app/" target="_blank">مشروع رقم 4 : انقر هنا</a>
-        <a href="https://lustrous-fox-87ae9d.netlify.app/" target="_blank">مشروع رقم 5 : انقر هنا</a>
-        <a href="https://incredible-cactus-7711e3.netlify.app/" target="_blank">مشروع رقم 6 : انقر هنا</a>
-    </div>
-
-    <hr>
-
-    <div class="social-contact">
-        <h2>تواصل معي</h2>
-        <a href="https://www.tiktok.com/@.a7_md" target="_blank" class="tiktok">
-            <i class="fab fa-tiktok"></i> تيك توك
-        </a>
-
-        <a href="https://wa.me/905528668231" target="_blank" class="whatsapp">
-            <i class="fab fa-whatsapp"></i> واتساب
-        </a>
-
-        <a href="https://instagram.com/k.69hk" target="_blank" class="instagram">
-            <i class="fab fa-instagram"></i> إنستغرام
-        </a>
-
-    </div>
-
+            // تحسين سلوك زر الواتساب: فتح في تطبيق أو نافذة جديدة (تحكم بسيط)
+            const waBtn = document.getElementById('whatsappBtn');
+            if(waBtn){
+                waBtn.addEventListener('click', (e) => {
+                    // لا نمنع الحدث — الرابط صحيح. لكن نضيف أثر بصري قصير.
+                    waBtn.style.transform = 'translateY(-3px) scale(0.995)';
+                    setTimeout(()=> waBtn.style.transform = '', 180);
+                });
+            }
+        });
+    </script>
 </body>
-
 </html>
-
-
