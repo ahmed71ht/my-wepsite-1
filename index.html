@@ -2,11 +2,11 @@
 <html dir="rtl" lang="ar">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <title>أحمد - Ahmed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>أحمد - Ahmed | المطور الصغير</title>
 
     <!-- خطوط وأيقونات -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <link rel="icon"
@@ -14,452 +14,1116 @@
         type="image/png">
 
     <style>
-        :root{
-            --bg:#07070a;
-            --card:#0f1116;
-            --muted:#9aa4b2;
-            --neon:#00eaff; /* Neon Blue chosen */
-            --accent: linear-gradient(90deg, rgba(0,234,255,0.12), rgba(0,153,255,0.06));
-            --glass: rgba(255,255,255,0.02);
-            --glass-2: rgba(255,255,255,0.03);
-            --radius: 12px;
+        :root {
+            --bg: #06060b;
+            --card: #0d0f18;
+            --card-hover: #12141f;
+            --muted: #8b95a8;
+            --neon: #00e5ff;
+            --neon-2: #0099ff;
+            --accent: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(0, 153, 255, 0.08));
+            --accent-strong: linear-gradient(135deg, #00e5ff, #0099ff);
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --radius: 18px;
+            --radius-sm: 12px;
+            --transition: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            --shadow-glow: 0 0 40px rgba(0, 229, 255, 0.08);
         }
 
-        *{box-sizing:border-box;margin:0;padding:0;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent}
-        html,body{height:100%}
-        body{
-            background: radial-gradient(1200px 600px at 10% 10%, rgba(0,234,255,0.03), transparent),
-                        radial-gradient(800px 500px at 90% 90%, rgba(0,68,255,0.02), transparent),
-                        var(--bg);
-            color:#e6eef6;
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
-            line-height:1.6;
-            padding:22px 16px 80px;
-            text-align:center;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .container{
-            max-width:900px;
-            margin:0 auto;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* Header */
-        header{
-            position:relative;
-            background: linear-gradient(90deg, rgba(0,234,255,0.08), rgba(0,153,255,0.04));
-            border:1px solid rgba(0,234,255,0.06);
-            padding:18px;
-            border-radius:14px;
-            box-shadow: 0 6px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-            backdrop-filter: blur(6px);
-            margin-bottom:18px;
+        body {
+            background:
+                radial-gradient(1400px 700px at 0% 0%, rgba(0, 229, 255, 0.04), transparent),
+                radial-gradient(1000px 600px at 100% 100%, rgba(0, 153, 255, 0.03), transparent),
+                radial-gradient(600px 400px at 50% 50%, rgba(0, 229, 255, 0.02), transparent),
+                var(--bg);
+            background-attachment: fixed;
+            color: #e8eef6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.7;
+            padding: 20px 12px 80px;
+            text-align: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        h1{
-            font-size:1.45rem;
-            font-weight:700;
+        /* جسيمات خلفية */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--neon);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============ Header ============ */
+        header {
+            position: relative;
+            background: linear-gradient(160deg, rgba(0, 229, 255, 0.1), rgba(0, 153, 255, 0.04), rgba(0, 0, 0, 0.3));
+            border: 1.5px solid rgba(0, 229, 255, 0.12);
+            padding: 28px 20px 22px;
+            border-radius: var(--radius);
+            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.7), var(--shadow-glow), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(0, 229, 255, 0.05), transparent, rgba(0, 153, 255, 0.03), transparent);
+            animation: rotateGlow 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes rotateGlow {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        header>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        header:hover {
+            border-color: rgba(0, 229, 255, 0.25);
+            box-shadow: 0 16px 60px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 229, 255, 0.12);
+        }
+
+        .avatar-ring {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--accent-strong);
+            padding: 3px;
+            margin-bottom: 12px;
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.35);
+            animation: pulseRing 2.5s ease-in-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0%,
+            100% {
+                box-shadow: 0 0 25px rgba(0, 229, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(0, 229, 255, 0.55), 0 0 80px rgba(0, 153, 255, 0.25);
+            }
+        }
+
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0a0e1a, #1a1f30);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+            letter-spacing: 2px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
             color: #ffffff;
-            display:inline-flex;
-            align-items:center;
-            gap:12px;
-            position:relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            letter-spacing: -0.5px;
         }
 
-        .neon-dot{
-            width:12px;height:12px;border-radius:50%;
-            background:var(--neon);
-            box-shadow: 0 0 10px rgba(0,234,255,0.6), 0 0 30px rgba(0,234,255,0.12);
-            transform:translateY(-1px);
+        .neon-dot {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--neon);
+            box-shadow: 0 0 14px rgba(0, 229, 255, 0.8), 0 0 40px rgba(0, 229, 255, 0.25), 0 0 80px rgba(0, 229, 255, 0.1);
+            animation: neonPulse 1.6s ease-in-out infinite;
+            display: inline-block;
         }
 
-        header .meta{
-            margin-top:8px;
-            color:var(--muted);
-            font-size:0.92rem;
-            display:flex;
-            gap:12px;
-            justify-content:center;
-            flex-wrap:wrap;
+        @keyframes neonPulse {
+            0%,
+            100% {
+                box-shadow: 0 0 14px rgba(0, 229, 255, 0.8), 0 0 40px rgba(0, 229, 255, 0.25);
+            }
+            50% {
+                box-shadow: 0 0 24px rgba(0, 229, 255, 1), 0 0 60px rgba(0, 229, 255, 0.45), 0 0 100px rgba(0, 229, 255, 0.15);
+            }
         }
 
-        /* Sections */
-        section.card{
-            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-            border:1px solid rgba(255,255,255,0.03);
-            padding:14px;
-            border-radius:var(--radius);
-            margin:14px 0;
-            box-shadow: 0 8px 30px rgba(2,6,23,0.6);
-            text-align:right;
+        header .meta {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-weight: 400;
+            letter-spacing: 0.3px;
         }
 
-        section.card h2{
-            display:flex;
-            align-items:center;
-            gap:10px;
-            justify-content:space-between;
-            color:#fff;
-            font-size:1.08rem;
-            margin-bottom:8px;
+        header .meta span {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 6px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 0.82rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        section.card h2 .title-left{
-            display:flex;
-            align-items:center;
-            gap:8px;
+        header .meta span i {
+            color: var(--neon);
+            font-size: 0.8rem;
         }
 
-        section.card p{
-            background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.0));
-            padding:12px;
-            border-radius:10px;
-            font-size:0.96rem;
-            color:#d8e6f2;
-            border-right:4px solid rgba(0,234,255,0.08);
+        header .meta span:hover {
+            background: rgba(0, 229, 255, 0.06);
+            border-color: rgba(0, 229, 255, 0.2);
         }
 
-        /* info list */
-        .info-grid{
-            display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:10px;
-            margin-top:6px;
+        /* ============ Sections ============ */
+        section.card {
+            background: linear-gradient(175deg, rgba(255, 255, 255, 0.025), rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.01));
+            border: 1.5px solid var(--glass-border);
+            padding: 18px 16px;
+            border-radius: var(--radius);
+            margin: 16px 0;
+            box-shadow: 0 10px 40px rgba(2, 6, 23, 0.7);
+            text-align: right;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
-        .info-item{
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:10px;
+        section.card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.2), rgba(0, 153, 255, 0.1), transparent);
+            pointer-events: none;
         }
 
-        .info-item .label{color:var(--muted);font-size:0.9rem}
-        .info-item .value{font-weight:600;color:#fff}
-
-        /* projects */
-        .projects{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-            gap:12px;
-            margin-top:8px;
+        section.card:hover {
+            border-color: rgba(0, 229, 255, 0.15);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 229, 255, 0.05);
+            transform: translateY(-2px);
         }
 
-        .project-card{
-            background: linear-gradient(180deg, rgba(0,234,255,0.02), transparent);
-            border:1px solid rgba(0,234,255,0.06);
-            padding:12px;
-            border-radius:10px;
-            text-align:right;
-            transition:transform .28s ease, box-shadow .28s ease;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
+        section.card h2 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: space-between;
+            color: #fff;
+            font-size: 1.12rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
         }
 
-        .project-card a{
-            color:#eafcff;
-            text-decoration:none;
-            font-weight:600;
+        section.card h2 .title-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .project-card .num{
-            color:var(--neon);
-            font-weight:700;
-            background:rgba(0,234,255,0.06);
-            padding:6px 10px;
-            border-radius:8px;
-            box-shadow: 0 6px 18px rgba(0,234,255,0.06);
+        section.card h2 .title-left i {
+            font-size: 1.1rem;
+            filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.5));
         }
 
-        .project-card:hover{
-            transform:translateY(-6px) scale(1.01);
-            box-shadow: 0 18px 50px rgba(0,234,255,0.06);
+        .badge {
+            font-size: 0.7rem;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--neon);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            letter-spacing: 0.5px;
         }
 
-        /* skills */
-        .skills-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
-        .skill{
-            display:flex;flex-direction:column;gap:6px;
+        /* ============ info-grid ============ */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
         }
 
-        .skill .bar{
-            height:10px;
-            background:rgba(255,255,255,0.04);
-            border-radius:999px;
-            overflow:hidden;
-            border:1px solid rgba(255,255,255,0.02);
+        .info-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.015);
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: var(--transition);
         }
 
-        .skill .bar > i{
-            display:block;
-            height:100%;
-            width:60%;
-            background: linear-gradient(90deg, var(--neon), rgba(0,153,255,0.9));
-            box-shadow: 0 6px 20px rgba(0,234,255,0.08);
-            border-radius:999px;
-            transition:width .8s cubic-bezier(.2,.9,.3,1);
+        .info-item:hover {
+            background: rgba(0, 229, 255, 0.03);
+            border-color: rgba(0, 229, 255, 0.1);
         }
 
-        .skill .label{
-            display:flex;justify-content:space-between;color:var(--muted);font-size:0.92rem;
+        .info-item .label {
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        /* social buttons */
-        .socials{
-            display:flex;
-            gap:10px;
-            justify-content:center;
-            flex-wrap:wrap;
-            margin-top:10px;
+        .info-item .label i {
+            color: var(--neon);
+            font-size: 0.8rem;
+            width: 18px;
+            text-align: center;
         }
 
-        .btn-social{
-            display:inline-flex;
-            align-items:center;
-            gap:8px;
-            padding:10px 14px;
-            border-radius:999px;
-            background:var(--glass-2);
-            border:1px solid rgba(255,255,255,0.03);
-            color:#eafcff;
-            text-decoration:none;
-            font-weight:600;
-            transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+        .info-item .value {
+            font-weight: 700;
+            color: #fff;
+            font-size: 0.92rem;
+            background: linear-gradient(135deg, #fff, #c8e6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .btn-social i{font-size:1.05rem;color:var(--neon)}
-
-        .btn-social:hover{
-            transform:translateY(-4px);
-            box-shadow: 0 14px 35px rgba(0,234,255,0.06);
-            background: linear-gradient(90deg, rgba(0,234,255,0.04), rgba(0,153,255,0.02));
+        /* ============ How paragraph ============ */
+        section.card p {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.015), rgba(0, 229, 255, 0.02));
+            padding: 14px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            color: #c8d8e8;
+            border-right: 4px solid rgba(0, 229, 255, 0.2);
+            line-height: 1.8;
+            transition: var(--transition);
         }
 
-        /* tiktok / whatsapp / insta specific */
-        .tiktok{--icon-color:#fff}
-        .whatsapp i{color:#25D366}
-        .instagram i{color:#c32aa3}
-
-        /* footer */
-        footer{
-            margin-top:18px;
-            color:var(--muted);
-            font-size:0.9rem;
-            opacity:0.9;
+        section.card p i {
+            color: var(--neon);
+            margin-left: 4px;
+            font-size: 0.9rem;
         }
 
-        /* small devices */
-        @media (max-width:720px){
-            .info-grid{grid-template-columns:1fr}
-            header{padding:14px}
-            .container{padding:0 6px}
-            .project-card{flex-direction:column;align-items:flex-start;gap:8px}
+        section.card p:hover {
+            border-right-color: rgba(0, 229, 255, 0.5);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(0, 229, 255, 0.04));
         }
 
-        /* very small tweaks */
-        a[role="button"]{cursor:pointer}
+        /* ============ Projects ============ */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .project-card {
+            background: linear-gradient(160deg, rgba(0, 229, 255, 0.04), rgba(0, 0, 0, 0.4), rgba(0, 153, 255, 0.02));
+            border: 1.5px solid rgba(0, 229, 255, 0.08);
+            padding: 14px 16px;
+            border-radius: var(--radius-sm);
+            text-align: right;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.05), transparent);
+            transition: left 0.6s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card a {
+            color: #dceeff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.93rem;
+            letter-spacing: -0.2px;
+            z-index: 1;
+        }
+
+        /* التعديل الأساسي: خلفية الأرقام بلورية بدل الأزرق */
+        .project-card .num {
+            color: #fff;
+            font-weight: 800;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 13px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            font-size: 1rem;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 229, 255, 0.1), 0 0 40px rgba(0, 0, 0, 0.6);
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        .project-card:hover .num {
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.2), 0 0 20px rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ============ Skills ============ */
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .skill {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .skill .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skill .skill-name {
+            font-weight: 600;
+            color: #d0dce8;
+            font-size: 0.92rem;
+        }
+
+        .skill .skill-percent {
+            font-weight: 700;
+            color: var(--neon);
+            font-size: 0.85rem;
+            background: rgba(0, 229, 255, 0.08);
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .skill .bar {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 999px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill .bar>i {
+            display: block;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--neon), var(--neon-2), #00c6ff);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-radius: 999px;
+            transition: width 1.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+            position: relative;
+        }
+
+        .skill .bar>i::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 20px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            filter: blur(4px);
+        }
+
+        /* ============ Social Buttons ============ */
+        .socials {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1.5px solid rgba(255, 255, 255, 0.06);
+            color: #eafcff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: -0.2px;
+        }
+
+        .btn-social::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(0, 229, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.5s ease;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .btn-social:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-social i {
+            font-size: 1.15rem;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .btn-social span {
+            z-index: 1;
+        }
+
+        .btn-social:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0, 229, 255, 0.12);
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        .btn-social:hover i {
+            transform: scale(1.15);
+        }
+
+        /* tiktok */
+        .tiktok i {
+            color: #fff;
+            filter: drop-shadow(0 0 6px #ff0050);
+        }
+        .tiktok:hover {
+            background: rgba(255, 0, 80, 0.1);
+        }
+
+        /* whatsapp */
+        .whatsapp i {
+            color: #25D366;
+            filter: drop-shadow(0 0 6px #25D366);
+        }
+        .whatsapp:hover {
+            background: rgba(37, 211, 102, 0.1);
+        }
+
+        /* instagram */
+        .instagram i {
+            color: #E1306C;
+            filter: drop-shadow(0 0 6px #E1306C);
+        }
+        .instagram:hover {
+            background: rgba(225, 48, 108, 0.1);
+        }
+
+        /* ============ Footer ============ */
+        footer {
+            margin-top: 22px;
+            color: var(--muted);
+            font-size: 0.88rem;
+            opacity: 0.8;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+        }
+
+        footer .heart {
+            color: #ff4757;
+            animation: heartBeat 1.2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartBeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.25);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* ============ Scroll to top ============ */
+        .scroll-top {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent-strong);
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 8px 30px rgba(0, 229, 255, 0.3);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            box-shadow: 0 12px 40px rgba(0, 229, 255, 0.5);
+            transform: translateY(-4px);
+        }
+
+        /* ============ Toast notification ============ */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            pointer-events: none;
+            font-weight: 500;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============ Responsive ============ */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px 6px 70px;
+            }
+            header {
+                padding: 20px 14px 18px;
+            }
+            h1 {
+                font-size: 1.4rem;
+                gap: 10px;
+            }
+            .avatar-ring {
+                width: 55px;
+                height: 55px;
+            }
+            .avatar-inner {
+                font-size: 1.5rem;
+            }
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .info-item {
+                padding: 8px 10px;
+                font-size: 0.8rem;
+            }
+            .info-item .value {
+                font-size: 0.82rem;
+            }
+            .projects {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .project-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 12px;
+            }
+            .project-card a {
+                font-size: 0.82rem;
+            }
+            .project-card .num {
+                padding: 6px 10px;
+                font-size: 0.85rem;
+            }
+            .btn-social {
+                padding: 10px 15px;
+                font-size: 0.82rem;
+                gap: 6px;
+            }
+            .scroll-top {
+                bottom: 16px;
+                left: 16px;
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .projects {
+                grid-template-columns: 1fr;
+            }
+            header .meta span {
+                padding: 4px 10px;
+                font-size: 0.72rem;
+            }
+            section.card {
+                padding: 14px 10px;
+            }
+            section.card h2 {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- جسيمات الخلفية -->
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
     <div class="container">
 
+        <!-- ============ Header ============ -->
         <header>
+            <div class="avatar-ring">
+                <div class="avatar-inner">A</div>
+            </div>
             <h1>
                 <span class="neon-dot" aria-hidden="true"></span>
                 أحمد - Ahmed
             </h1>
-
-            <div class="meta" aria-hidden="true">
-                <div>موقع شخصي • بورتفوليو خفيف</div>
+            <div class="meta">
+                <span><i class="fa-solid fa-code"></i> مطور مواقع</span>
+                <span><i class="fa-solid fa-calendar-alt"></i> 15 سنة</span>
+                <span><i class="fa-solid fa-location-dot"></i> سوريا</span>
             </div>
         </header>
 
-        <!-- من أنا -->
+        <!-- ============ من أنا ============ -->
         <section class="card" id="who">
             <h2>
                 <span class="title-left"><i class="fa-solid fa-user" style="color:var(--neon)"></i> من أنا؟</span>
+                <span class="badge">معلومات شخصية</span>
             </h2>
-
             <div class="info-grid" role="list">
-                <div class="info-item"><div class="label">الاسم الكامل</div><div class="value">أحمد حسام حرامي</div></div>
-                <div class="info-item"><div class="label">مكان الولادة</div><div class="value">سوريا / إدلب / معرة النعمان</div></div>
-                <div class="info-item"><div class="label">مكان السكن</div><div class="value">سوريا / إدلب / الدانا</div></div>
-                <div class="info-item"><div class="label">العمر</div><div class="value">14 سنة</div></div>
-                <div class="info-item"><div class="label">تاريخ الميلاد</div><div class="value">10.6.2011</div></div>
-                <div class="info-item"><div class="label">الصف</div><div class="value">الثامن</div></div>
-                <div class="info-item"><div class="label">الطول</div><div class="value">174 سم</div></div>
-                <div class="info-item"><div class="label">الوزن</div><div class="value">73 كغ</div></div>
+                <div class="info-item">
+                    <div class="label"><i class="fa-solid fa-id-card"></i> الاسم الكامل</div>
+                    <div class="value">أحمد حسام حرامي</div>
+                </div>
+                <div class="info-item">
+                    <div class="label"><i class="fa-solid fa-map-pin"></i> مكان الولادة</div>
+                    <div class="value">سوريا / إدلب / معرة النعمان</div>
+                </div>
+                <div class="info-item">
+                    <div class="label"><i class="fa-solid fa-house"></i> مكان السكن</div>
+                    <div class="value">سوريا / اللاذقية</div>
+                </div>
+                <div class="info-item">
+                    <div class="label"><i class="fa-solid fa-calendar-alt"></i> العمر</div>
+                    <div class="value">15 سنة</div>
+                </div>
+                <div class="info-item">
+                    <div class="label"><i class="fa-solid fa-cake-candles"></i> تاريخ الميلاد</div>
+                    <div class="value">10.6.2011</div>
+                </div>
+                <div class="info-item">
+                    <div class="label"><i class="fa-solid fa-graduation-cap"></i> الصف</div>
+                    <div class="value">تاسع</div>
+                </div>
             </div>
         </section>
 
-        <!-- كيف بدأت -->
+        <!-- ============ كيف بدأت ============ -->
         <section class="card" id="how">
-            <h2><span class="title-left"><i class="fa-solid fa-lightbulb" style="color:var(--neon)"></i> كيف بدأت في تعلم البرمجة؟</span></h2>
+            <h2>
+                <span class="title-left"><i class="fa-solid fa-lightbulb" style="color:var(--neon)"></i> كيف بدأت في تعلم البرمجة؟</span>
+                <span class="badge">رحلتي</span>
+            </h2>
             <p>
-                في سن 12 بدأت أفكر أن أصبح مبرمجاً وأتعلم البرمجة، وبدأت التعلم في سن 13 بلغات بسيطة على الهاتف.
+                <i class="fa-solid fa-lightbulb"></i> في سن 12 بدأت أفكر أن أصبح مبرمجاً وأتعلم البرمجة، وبدأت التعلم في سن 13 بلغات بسيطة على الهاتف.
                 ومنذ فترة أحضر لي والدي حاسوباً، ومنذ ذلك الحين بدأت في تعلم لغات الويب مثل HTML و CSS وأطمح لتطوير
-                مهاراتي أكثر في المستقبل.
+                مهاراتي أكثر في المستقبل. <i class="fa-solid fa-rocket"></i>
             </p>
         </section>
 
-        <!-- مهارات -->
+        <!-- ============ مهاراتي ============ -->
         <section class="card" id="skills">
-            <h2><span class="title-left"><i class="fa-solid fa-code" style="color:var(--neon)"></i> مهاراتي</span></h2>
-
-            <div class="skills-list" aria-hidden="false">
+            <h2>
+                <span class="title-left"><i class="fa-solid fa-code" style="color:var(--neon)"></i> مهاراتي التقنية</span>
+                <span class="badge">مستويات</span>
+            </h2>
+            <div class="skills-list">
                 <div class="skill">
-                    <div class="label">HTML</div>
-                    <div class="bar"><i style="width:95%"></i></div>
-                    <div class="label" style="display:flex;justify-content:space-between;color:var(--muted)">
-                        <span>مستوى تقريبي</span><span style="color:#eafcff">متقدم</span>
+                    <div class="skill-header">
+                        <span class="skill-name">HTML</span>
+                        <span class="skill-percent">95%</span>
                     </div>
+                    <div class="bar"><i data-width="95%"></i></div>
                 </div>
-
                 <div class="skill">
-                    <div class="label">CSS</div>
-                    <div class="bar"><i style="width:92%"></i></div>
-                    <div class="label" style="display:flex;justify-content:space-between;color:var(--muted)">
-                        <span>مستوى تقريبي</span><span style="color:#eafcff">متقدم</span>
+                    <div class="skill-header">
+                        <span class="skill-name">CSS</span>
+                        <span class="skill-percent">92%</span>
                     </div>
+                    <div class="bar"><i data-width="92%"></i></div>
                 </div>
-
                 <div class="skill">
-                    <div class="label">JavaScript</div>
-                    <div class="bar"><i style="width:90%"></i></div>
-                    <div class="label" style="display:flex;justify-content:space-between;color:var(--muted)">
-                        <span>مستوى تقريبي</span><span style="color:#eafcff">متقدم</span>
+                    <div class="skill-header">
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-percent">90%</span>
                     </div>
+                    <div class="bar"><i data-width="90%"></i></div>
                 </div>
-
                 <div class="skill">
-                    <div class="label">PHP</div>
-                    <div class="bar"><i style="width:80%"></i></div>
-                    <div class="label" style="display:flex;justify-content:space-between;color:var(--muted)">
-                        <span>مستوى تقريبي</span><span style="color:#eafcff">متقدم — متوسط</span>
+                    <div class="skill-header">
+                        <span class="skill-name">PHP</span>
+                        <span class="skill-percent">80%</span>
                     </div>
+                    <div class="bar"><i data-width="80%"></i></div>
                 </div>
-
                 <div class="skill">
-                    <div class="label">Laravel</div>
-                    <div class="bar"><i style="width:60%"></i></div>
-                    <div class="label" style="display:flex;justify-content:space-between;color:var(--muted)">
-                        <span>مستوى تقريبي</span><span style="color:#eafcff">متقدم — متوسط</span>
+                    <div class="skill-header">
+                        <span class="skill-name">Laravel</span>
+                        <span class="skill-percent">60%</span>
                     </div>
+                    <div class="bar"><i data-width="60%"></i></div>
                 </div>
             </div>
         </section>
 
-        <!-- مشاريع -->
+        <!-- ============ مشاريعي ============ -->
         <section class="card" id="projects">
-            <h2><span class="title-left"><i class="fa-solid fa-diagram-project" style="color:var(--neon)"></i> مشاريعي</span></h2>
-
+            <h2>
+                <span class="title-left"><i class="fa-solid fa-diagram-project" style="color:var(--neon)"></i> مشاريعي</span>
+                <span class="badge">5 مشاريع</span>
+            </h2>
             <div class="projects" role="list">
-                <div class="project-card" role="listitem">
-                    <div>
-                        <div class="num">1</div>
-                    </div>
-                    <div style="text-align:right">
-                        <a href="https://register-login-ahmed71ht.netlify.app/" target="_blank" rel="noopener">مشروع رقم 1 : انقر هنا</a>
-                    </div>
+                <div class="project-card" role="listitem" onclick="window.open('https://register-login-ahmed71ht.netlify.app/','_blank')">
+                    <div class="num">01</div>
+                    <a href="https://register-login-ahmed71ht.netlify.app/" target="_blank" rel="noopener">تسجيل الدخول</a>
                 </div>
-
-                <div class="project-card" role="listitem">
-                    <div><div class="num">2</div></div>
-                    <div style="text-align:right"><a href="https://prayer-time-ahmed71ht.netlify.app/" target="_blank" rel="noopener">مشروع رقم 2 : انقر هنا</a></div>
+                <div class="project-card" role="listitem" onclick="window.open('https://prayer-time-ahmed71ht.netlify.app/','_blank')">
+                    <div class="num">02</div>
+                    <a href="https://prayer-time-ahmed71ht.netlify.app/" target="_blank" rel="noopener">مواقيت الصلاة</a>
                 </div>
-
-                <div class="project-card" role="listitem">
-                    <div><div class="num">3</div></div>
-                    <div style="text-align:right"><a href="https://electronic-rosary-1.netlify.app/" target="_blank" rel="noopener">مشروع رقم 3 : انقر هنا</a></div>
+                <div class="project-card" role="listitem" onclick="window.open('https://electronic-rosary-1.netlify.app/','_blank')">
+                    <div class="num">03</div>
+                    <a href="https://electronic-rosary-1.netlify.app/" target="_blank" rel="noopener">المسبحة الإلكترونية</a>
                 </div>
-
-                <div class="project-card" role="listitem">
-                    <div><div class="num">4</div></div>
-                    <div style="text-align:right"><a href="https://calculator-ahmed71ht.netlify.app/" target="_blank" rel="noopener">مشروع رقم 4 : انقر هنا</a></div>
+                <div class="project-card" role="listitem" onclick="window.open('https://calculator-ahmed71ht.netlify.app/','_blank')">
+                    <div class="num">04</div>
+                    <a href="https://calculator-ahmed71ht.netlify.app/" target="_blank" rel="noopener">الآلة الحاسبة</a>
                 </div>
-
-                <div class="project-card" role="listitem">
-                    <div><div class="num">5</div></div>
-                    <div style="text-align:right"><a href="https://lustrous-fox-87ae9d.netlify.app/" target="_blank" rel="noopener">مشروع رقم 5 : انقر هنا</a></div>
-                </div>
-
-                <div class="project-card" role="listitem">
-                    <div><div class="num">6</div></div>
-                    <div style="text-align:right"><a href="https://ahmed71ht.github.io/istiqamah" target="_blank" rel="noopener">مشروع رقم 6 : انقر هنا</a></div>
+                <div class="project-card" role="listitem" onclick="window.open('https://ahmed71ht.github.io/istiqamah','_blank')">
+                    <div class="num">05</div>
+                    <a href="https://ahmed71ht.github.io/istiqamah" target="_blank" rel="noopener">استقامة</a>
                 </div>
             </div>
         </section>
 
-        <!-- تواصل -->
+        <!-- ============ تواصل معي ============ -->
         <section class="card" id="contact">
-            <h2><span class="title-left"><i class="fa-solid fa-address-book" style="color:var(--neon)"></i> تواصل معي</span></h2>
-
+            <h2>
+                <span class="title-left"><i class="fa-solid fa-address-book" style="color:var(--neon)"></i> تواصل معي</span>
+                <span class="badge">مواقع التواصل</span>
+            </h2>
             <div class="socials" role="navigation" aria-label="طرق التواصل">
                 <a class="btn-social tiktok" href="https://www.tiktok.com/@.a7_md" target="_blank" rel="noopener">
-                    <i class="fab fa-tiktok"></i> تيك توك
+                    <i class="fab fa-tiktok"></i> <span>تيك توك</span>
                 </a>
-
                 <a id="whatsappBtn" class="btn-social whatsapp" href="https://wa.me/905528668231" target="_blank" rel="noopener">
-                    <i class="fab fa-whatsapp"></i> واتساب
+                    <i class="fab fa-whatsapp"></i> <span>واتساب</span>
                 </a>
-
                 <a class="btn-social instagram" href="https://instagram.com/k.69hk" target="_blank" rel="noopener">
-                    <i class="fab fa-instagram"></i> إنستغرام
+                    <i class="fab fa-instagram"></i> <span>إنستغرام</span>
                 </a>
             </div>
-
-            <div style="margin-top:12px;color:var(--muted);font-size:0.95rem">
-                اضغط على أي زر لفتح الرابط في نافذة جديدة
+            <div style="margin-top:14px;color:var(--muted);font-size:0.88rem;text-align:center;">
+                <i class="fa-solid fa-arrow-pointer"></i> اضغط على أي زر لفتح الرابط في نافذة جديدة
             </div>
         </section>
 
+        <!-- ============ Footer ============ -->
         <footer>
-              أحمد - Ahmed 
+            © 2026 أحمد - Ahmed &nbsp;|&nbsp; صنع بـ <span class="heart"><i class="fa-solid fa-heart"></i></span> وطموح كبير
         </footer>
 
     </div>
 
+    <!-- زر العودة للأعلى -->
+    <button class="scroll-top" id="scrollTopBtn" aria-label="العودة للأعلى" title="العودة للأعلى">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- تنبيه منبثق -->
+    <div class="toast" id="toast"></div>
+
     <script>
-        // بسيط: تأثير تحميل تدريجي لشريط المهارات عند دخول الصفحة
         document.addEventListener('DOMContentLoaded', () => {
-            // اختيار كل أشرطة المهارات (i داخل .bar)
-            const bars = document.querySelectorAll('.skill .bar > i');
-            // إعادة ضبط العرض ثم تأخير لعمل أنيميشن لطيف
-            bars.forEach(bar => {
-                const w = bar.style.width || '0%';
-                bar.style.width = '0%';
-                setTimeout(() => {
-                    bar.style.width = w;
-                }, 150);
+
+            // ======== إنشاء جسيمات الخلفية ========
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 12 + 8) + 's';
+                particle.style.animationDelay = (Math.random() * 10) + 's';
+                particle.style.opacity = Math.random() * 0.4;
+                particlesContainer.appendChild(particle);
+            }
+
+            // ======== تحميل تدريجي لأشرطة المهارات ========
+            const skillBars = document.querySelectorAll('.skill .bar > i');
+            const skillsSection = document.getElementById('skills');
+
+            const animateBars = () => {
+                skillBars.forEach(bar => {
+                    const targetWidth = bar.getAttribute('data-width') || '0%';
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = targetWidth;
+                    }, 100);
+                });
+            };
+
+            // Intersection Observer لتشغيل الأنيميشن عند رؤية القسم
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateBars();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            } else {
+                animateBars();
+            }
+
+            // ======== زر العودة للأعلى ========
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
             });
 
-            // تأثير ضوء على العنوان كل ثواني (ناعِم)
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ======== تأثير الضوء على النقطة ========
             const neonDot = document.querySelector('.neon-dot');
-            if(neonDot){
-                let on = true;
+            if (neonDot) {
+                let brightness = 1;
+                let direction = -1;
                 setInterval(() => {
-                    neonDot.style.opacity = on ? '1' : '0.55';
-                    on = !on;
-                }, 1200);
+                    brightness += direction * 0.15;
+                    if (brightness <= 0.4) direction = 1;
+                    if (brightness >= 1.6) direction = -1;
+                    neonDot.style.filter = `brightness(${brightness})`;
+                }, 80);
             }
 
-            // تحسين سلوك زر الواتساب: فتح في تطبيق أو نافذة جديدة (تحكم بسيط)
+            // ======== تحسين زر الواتساب ========
             const waBtn = document.getElementById('whatsappBtn');
-            if(waBtn){
+            const toast = document.getElementById('toast');
+
+            const showToast = (message) => {
+                toast.textContent = message;
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2000);
+            };
+
+            if (waBtn) {
                 waBtn.addEventListener('click', (e) => {
-                    // لا نمنع الحدث — الرابط صحيح. لكن نضيف أثر بصري قصير.
-                    waBtn.style.transform = 'translateY(-3px) scale(0.995)';
-                    setTimeout(()=> waBtn.style.transform = '', 180);
+                    waBtn.style.transform = 'translateY(-5px) scale(0.96)';
+                    setTimeout(() => waBtn.style.transform = '', 200);
+                    showToast('✅ جاري فتح واتساب...');
                 });
             }
+
+            // ======== تأثير النقر على بطاقات المشاريع ========
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    const link = this.querySelector('a');
+                    if (link && e.target !== link) {
+                        showToast('🔗 جاري فتح المشروع...');
+                    }
+                });
+            });
+
+            // ======== تأثير كتابة تدريجي للعنوان الرئيسي ========
+            const headerTitle = document.querySelector('header h1');
+            if (headerTitle) {
+                headerTitle.style.opacity = '0';
+                headerTitle.style.transform = 'translateY(10px)';
+                headerTitle.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+                setTimeout(() => {
+                    headerTitle.style.opacity = '1';
+                    headerTitle.style.transform = 'translateY(0)';
+                }, 200);
+            }
+
+            // ======== تأثيرات التمرير للبطاقات ========
+            const allCards = document.querySelectorAll('section.card');
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        cardObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            allCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+                cardObserver.observe(card);
+            });
+
         });
     </script>
 </body>
 </html>
-
-
-
-
-
-
